@@ -14,7 +14,7 @@ def shorten(request: Request, payload: ShortenRequest, db: Session = Depends(get
     base_url = str(request.base_url).rstrip("/")
     url_obj = services.shorten_url(db, payload.url, base_url)
     short_url = f"{base_url}/{url_obj.short_code}"
-    return ShortenResponse(short_code=url_obj.short_code, short_url=short_url)
+    return ShortenResponse(short_code=url_obj.short_code, short_url=short_url, original_url=url_obj.original_url)
 
 
 @router.get("/stats/{short_code}", response_model=StatsResponse)

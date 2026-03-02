@@ -151,7 +151,7 @@
 
         if (res.ok) {
           result.className = 'result success';
-          result.innerHTML = `Short URL: <a href="${data.short_url}" target="_blank">${data.short_url}</a><br><small>Code: ${data.short_code}</small>`;
+          result.innerHTML = `Short URL: <a href="${data.short_url}" target="_blank">${data.short_url}</a> <button onclick="navigator.clipboard.writeText('${data.short_url}')">Copy</button><br><small>Code: ${data.short_code}</small>`;
         } else {
           result.className = 'result error';
           const msg = data.detail || 'Unknown error';
